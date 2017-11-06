@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            var key = '&APPID=7167cbc1269be9994474005db8788fe9'
+
+            var link =  'http://api.openweathermap.org/data/2.5/weather?q=&APPID=7167cbc1269be9994474005db8788fe9'
+
+
+            $('#form').submit(function() {
+                $.get(link, function(res) {
+
+                }, 'json');
+                return false
+                });
+
+        });
+    </script>
+</head>
+<body>
+<form id="form">
+<input class="city" value="city" placeholder="Search City"> </input>
+<button id="btn" type="submit" value="Search"></button>
+</form>
+
+</body>
+</html>

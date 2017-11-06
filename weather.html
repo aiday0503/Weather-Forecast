@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+
+
+            $('#form').submit(function() {
+                var key = '7167cbc1269be9994474005db8788fe9';
+                var city = $('.city').val();
+                //console.log(city)
+                var link =  'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + key
+
+                $.get(link, function(res) {
+                    var temp = res.main.temp;
+                    var fahr = 9/5*(temp - 273) + 32;
+                    fahr=Math.floor(fahr);
+                    var city = res.name;
+                    //console.log('temp: ', temp);
+                    //console.log('city: ', city);
+
+                    $('#citi').html(city);
+                    $('#temper').html(fahr)
+                }, 'json');
+                return false
+                });
+
+        });
+    </script>
+</head>
+<body>
+<form id="form">
+<input class="city" value="city" placeholder="Search City"> </input>
+<button id="btn" type="submit" value="Search">Search</button>
+<div class="temp">
+    <p id="citi"></p>
+    <p id="temper"></p>
+</div>
+
+</form>
+
+<style>
+    #form{
+        width: 500px;
+    }
+    #btn{
+        width: 200px;
+    }
+</style>
+
+</body>
+</html>
